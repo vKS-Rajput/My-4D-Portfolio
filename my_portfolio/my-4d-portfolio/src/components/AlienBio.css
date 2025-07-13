@@ -1,0 +1,22 @@
+.alien-bio {
+  position: absolute;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #00ffff;
+  font-size: 1.1rem;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  max-width: 90vw;
+  z-index: 20;
+  text-shadow: 0 0 8px #00ffff88;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 1; }
+}
