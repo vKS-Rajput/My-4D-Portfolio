@@ -195,48 +195,69 @@ function App() {
 
   /* ---------- UI ---------- */
   return (
-     <div className="w-screen h-screen bg-black text-white font-mono overflow-hidden">
-    {showIntro && <GlitchIntro onEnter={() => setShowIntro(false)} />}
+    <div className="w-screen h-screen bg-black text-[#80ffe0] font-mono overflow-hidden">
+      {showIntro && <GlitchIntro onEnter={() => setShowIntro(false)} />}
 
-    {!showIntro && (
-      <>
-        {/* 👽 Assistant */}
-        <AlienAssistant />
+      {!showIntro && (
+        <>
+          {/* 👽 Alien AI Assistant */}
+          <AlienAssistant />
 
-        {/* 🕰 4D Time‑Distortion Clock –‑ INSERT HERE */}
-        <TimeDistortionClock />
+          {/* ⏳ Time Distortion Clock */}
+          <TimeDistortionClock />
 
-        {/* Page title */}
-        <header className="absolute top-0 left-0 w-full text-center p-6 z-20">
-          <GlitchText>My 4D Portfolio</GlitchText>
-        </header>
+          {/* 🧠 Dual Headers: Title + Name */}
+          <header className="absolute top-0 left-0 w-full text-center pt-6 z-20">
+            <h1 className="text-4xl font-bold tracking-widest mb-2 text-[#80ffe0] drop-shadow-lg">
+              Vishwajeet Pratap Singh
+            </h1>
+            <p className="text-lg text-[#b8ffe7] italic font-medium tracking-wider">
+              My 4D Interactive Portfolio
+            </p>
+          </header>
 
+          {/* 🌌 Portals for navigation */}
           {!section && (
-            <Portals onSelect={(sec)=>{
-              setShowWormhole(true);
-              setTimeout(()=>{ setSection(sec); setShowWormhole(false); },700);
-            }}/>
+            <Portals
+              label="Explore Vishwajeet’s Mind"
+              onSelect={(sec) => {
+                setShowWormhole(true);
+                setTimeout(() => {
+                  setSection(sec);
+                  setShowWormhole(false);
+                }, 700);
+              }}
+            />
           )}
 
-          <WormholeOverlay isActive={showWormhole}/>
-          <SectionPanel section={section} onClose={()=>setSection(null)}/>
-            {!showIntro && section && isSceneReady && (
-          <SkillPanel3D
-            scene={sceneRef.current}
-            skill={section}
-            position={[0, 0, 2]}   // tweak if panel should float nearer/farther
-          />
-        )}
+          {/* 🌀 Wormhole effect */}
+          <WormholeOverlay isActive={showWormhole} />
+
+          {/* 🔍 Skill Section Panel */}
+          <SectionPanel section={section} onClose={() => setSection(null)} />
+
+          {/* 🧠 Skill Panel Floating in 3D */}
+          {!showIntro && section && isSceneReady && (
+            <SkillPanel3D
+              scene={sceneRef.current}
+              skill={section}
+              position={[0, 0, 2]}
+            />
+          )}
         </>
       )}
 
-<AlienBio />
-      <div ref={mountRef} className="fixed inset-0 w-full h-full z-0"/>
+      {/* 👤 Bio Floating Card */}
+      <AlienBio />
 
+      {/* 🖼 3D Scene Mount */}
+      <div ref={mountRef} className="fixed inset-0 w-full h-full z-0" />
+
+      {/* ⏳ Loader */}
       {!isSceneReady && !showIntro && (
         <div className="absolute inset-0 flex items-center justify-center z-30 bg-black/80">
-          <div className="h-12 w-12 animate-spin border-4 border-purple-500 border-b-transparent rounded-full"/>
-          <p className="ml-4 text-lg text-purple-400">Loading 4D Scene…</p>
+          <div className="h-12 w-12 animate-spin border-4 border-[#80ffe0] border-b-transparent rounded-full" />
+          <p className="ml-4 text-lg text-[#80ffe0]">Calibrating Deep Space Interface…</p>
         </div>
       )}
     </div>

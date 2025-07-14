@@ -1,14 +1,18 @@
 .glitch {
   position: relative;
-  font-size: 2.5rem; /* Slightly larger for impact */
+  /* Font size will be controlled by Tailwind classes in JSX for responsiveness */
   font-weight: bold;
-  color: #00ffff; /* Primary cyan glow */
+  color: var(--electric-blue); /* Use CSS variable for primary text color */
   text-transform: uppercase;
-  letter-spacing: 0.15em; /* Increased letter spacing */
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3); /* Subtle glow */
+  letter-spacing: 0.1em; /* Slightly reduced letter spacing for better readability */
+  /* Enhanced, subtle glow using multiple text shadows */
+  text-shadow:
+    0 0 8px rgba(0, 234, 255, 0.6), /* Electric blue glow */
+    0 0 15px rgba(0, 234, 255, 0.4),
+    0 0 20px rgba(0, 234, 255, 0.2);
   animation:
-    glitch-skew 2s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) alternate-reverse, /* Smoother, more complex skew */
-    glitch-flicker 0.1s infinite step-end; /* Fast, subtle flicker */
+    glitch-skew 1.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94) alternate-reverse,
+    glitch-flicker 0.08s infinite step-end; /* Faster, more subtle flicker */
 }
 
 .glitch::before,
@@ -19,142 +23,167 @@
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.8;
+  opacity: 0.85; /* Slightly less opaque for better blending */
   overflow: hidden; /* Ensure content doesn't spill */
 }
 
 .glitch::before {
   animation:
-    glitch-top 1.5s infinite linear alternate-reverse, /* Adjusted duration */
-    glitch-color-top 3s infinite linear alternate-reverse; /* New color animation */
-  color: #ff00c8; /* Magenta primary glitch color */
-  text-shadow: -2px 0 0 #ff00c8, 2px 0 0 #00ffea; /* Glitch shadows */
+    glitch-top 1.2s infinite linear alternate-reverse, /* Adjusted duration for snappier effect */
+    glitch-color-top 2.8s infinite linear alternate-reverse; /* Cohesive color animation */
+  color: var(--accent-magenta); /* Primary glitch color: a vibrant magenta */
+  text-shadow: -1px 0 0 var(--accent-magenta), 1px 0 0 var(--electric-blue); /* Refined glitch shadows */
 }
 
 .glitch::after {
   animation:
-    glitch-bottom 1.8s infinite linear alternate-reverse, /* Adjusted duration */
-    glitch-color-bottom 3.5s infinite linear alternate-reverse; /* New color animation */
-  color: #00ffea; /* Cyan primary glitch color */
-  text-shadow: 2px 0 0 #00ffea, -2px 0 0 #ff00c8; /* Glitch shadows */
+    glitch-bottom 1.4s infinite linear alternate-reverse, /* Adjusted duration */
+    glitch-color-bottom 3.2s infinite linear alternate-reverse; /* Cohesive color animation */
+  color: var(--electric-blue); /* Primary glitch color: electric blue */
+  text-shadow: 1px 0 0 var(--electric-blue), -1px 0 0 var(--accent-magenta); /* Refined glitch shadows */
 }
 
 /* --- Advanced Glitch Keyframes --- */
 
 @keyframes glitch-top {
   0% {
-    clip: rect(0px, 9999px, 5px, 0px);
-    transform: translate(-3px, -3px);
+    clip: rect(0px, 9999px, 3px, 0px); /* Smaller clip sections */
+    transform: translate(-2px, -2px); /* Reduced displacement */
   }
-  15% {
-    clip: rect(10px, 9999px, 15px, 0px);
-    transform: translate(3px, 3px);
+  10% {
+    clip: rect(8px, 9999px, 12px, 0px);
+    transform: translate(2px, 2px);
   }
-  30% {
-    clip: rect(20px, 9999px, 25px, 0px);
+  20% {
+    clip: rect(18px, 9999px, 22px, 0px);
     transform: translate(-1px, -1px);
   }
-  45% {
-    clip: rect(30px, 9999px, 35px, 0px);
-    transform: translate(4px, 4px);
+  30% {
+    clip: rect(28px, 9999px, 32px, 0px);
+    transform: translate(1.5px, 1.5px);
+  }
+  40% {
+    clip: rect(38px, 9999px, 42px, 0px);
+    transform: translate(-0.5px, -0.5px);
+  }
+  50% {
+    clip: rect(48px, 9999px, 52px, 0px);
+    transform: translate(2.5px, 2.5px);
   }
   60% {
-    clip: rect(40px, 9999px, 45px, 0px);
-    transform: translate(-2px, -2px);
+    clip: rect(58px, 9999px, 62px, 0px);
+    transform: translate(-1.5px, -1.5px);
   }
-  75% {
-    clip: rect(50px, 9999px, 55px, 0px);
+  70% {
+    clip: rect(68px, 9999px, 72px, 0px);
     transform: translate(1px, 1px);
   }
+  80% {
+    clip: rect(78px, 9999px, 82px, 0px);
+    transform: translate(-2.5px, -2.5px);
+  }
   90% {
-    clip: rect(60px, 9999px, 65px, 0px);
-    transform: translate(-4px, -4px);
+    clip: rect(88px, 9999px, 92px, 0px);
+    transform: translate(0.5px, 0.5px);
   }
   100% {
-    clip: rect(0px, 9999px, 5px, 0px);
-    transform: translate(-3px, -3px);
+    clip: rect(0px, 9999px, 3px, 0px);
+    transform: translate(-2px, -2px);
   }
 }
 
 @keyframes glitch-bottom {
   0% {
-    clip: rect(0px, 9999px, 5px, 0px);
-    transform: translate(3px, 3px);
-  }
-  15% {
-    clip: rect(10px, 9999px, 15px, 0px);
-    transform: translate(-3px, -3px);
-  }
-  30% {
-    clip: rect(20px, 9999px, 25px, 0px);
-    transform: translate(1px, 1px);
-  }
-  45% {
-    clip: rect(30px, 9999px, 35px, 0px);
-    transform: translate(-4px, -4px);
-  }
-  60% {
-    clip: rect(40px, 9999px, 45px, 0px);
+    clip: rect(0px, 9999px, 3px, 0px);
     transform: translate(2px, 2px);
   }
-  75% {
-    clip: rect(50px, 9999px, 55px, 0px);
+  10% {
+    clip: rect(8px, 9999px, 12px, 0px);
+    transform: translate(-2px, -2px);
+  }
+  20% {
+    clip: rect(18px, 9999px, 22px, 0px);
+    transform: translate(1px, 1px);
+  }
+  30% {
+    clip: rect(28px, 9999px, 32px, 0px);
+    transform: translate(-1.5px, -1.5px);
+  }
+  40% {
+    clip: rect(38px, 9999px, 42px, 0px);
+    transform: translate(0.5px, 0.5px);
+  }
+  50% {
+    clip: rect(48px, 9999px, 52px, 0px);
+    transform: translate(-2.5px, -2.5px);
+  }
+  60% {
+    clip: rect(58px, 9999px, 62px, 0px);
+    transform: translate(1.5px, 1.5px);
+  }
+  70% {
+    clip: rect(68px, 9999px, 72px, 0px);
     transform: translate(-1px, -1px);
   }
+  80% {
+    clip: rect(78px, 9999px, 82px, 0px);
+    transform: translate(2.5px, 2.5px);
+  }
   90% {
-    clip: rect(60px, 9999px, 65px, 0px);
-    transform: translate(4px, 4px);
+    clip: rect(88px, 9999px, 92px, 0px);
+    transform: translate(-0.5px, -0.5px);
   }
   100% {
-    clip: rect(0px, 9999px, 5px, 0px);
-    transform: translate(3px, 3px);
+    clip: rect(0px, 9999px, 3px, 0px);
+    transform: translate(2px, 2px);
   }
 }
 
 @keyframes glitch-skew {
-  0% {
+  0%, 100% {
     transform: skew(0deg);
   }
   25% {
-    transform: skew(-1deg, 0.5deg);
+    transform: skew(-0.5deg, 0.25deg); /* More subtle skew */
   }
   50% {
-    transform: skew(0.5deg, -1deg);
+    transform: skew(0.25deg, -0.5deg);
   }
   75% {
-    transform: skew(-0.5deg, 1deg);
-  }
-  100% {
-    transform: skew(0deg);
+    transform: skew(-0.25deg, 0.5deg);
   }
 }
 
 @keyframes glitch-flicker {
   0%, 100% { opacity: 1; }
-  5% { opacity: 0.8; }
-  10% { opacity: 1; }
-  15% { opacity: 0.9; }
-  20% { opacity: 1; }
-  25% { opacity: 0.7; }
-  30% { opacity: 1; }
-  35% { opacity: 0.8; }
-  40% { opacity: 1; }
-  45% { opacity: 0.95; }
-  50% { opacity: 1; }
+  2% { opacity: 0.8; } /* Very short, quick flickers */
+  4% { opacity: 1; }
+  6% { opacity: 0.9; }
+  8% { opacity: 1; }
+  10% { opacity: 0.7; }
+  12% { opacity: 1; }
+  14% { opacity: 0.85; }
+  16% { opacity: 1; }
+  /* Less frequent, more random-like flickers */
+  25% { opacity: 0.9; }
+  26% { opacity: 1; }
+  45% { opacity: 0.8; }
+  46% { opacity: 1; }
+  70% { opacity: 0.95; }
+  71% { opacity: 1; }
 }
 
+/* New color animations for a more cohesive, futuristic palette */
 @keyframes glitch-color-top {
-  0% { color: #ff00c8; }
-  25% { color: #00ffff; }
-  50% { color: #ffea00; } /* Yellowish */
-  75% { color: #8a2be2; } /* Blue Violet */
-  100% { color: #ff00c8; }
+  0% { color: var(--accent-magenta); }
+  33% { color: var(--electric-blue); }
+  66% { color: var(--accent-purple); } /* A new purple accent */
+  100% { color: var(--accent-magenta); }
 }
 
 @keyframes glitch-color-bottom {
-  0% { color: #00ffea; }
-  25% { color: #ff00c8; }
-  50% { color: #ff4500; } /* Orange Red */
-  75% { color: #00ff00; } /* Green */
-  100% { color: #00ffea; }
+  0% { color: var(--electric-blue); }
+  33% { color: var(--accent-magenta); }
+  66% { color: var(--accent-green); } /* Using the existing accent green */
+  100% { color: var(--electric-blue); }
 }
