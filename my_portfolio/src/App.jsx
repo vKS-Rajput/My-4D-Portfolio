@@ -209,7 +209,7 @@ function App() {
           {/* 🧠 Dual Headers: Title + Name */}
           <header className="absolute top-0 left-0 w-full text-center pt-6 z-20">
             <h1 className="text-4xl font-bold tracking-widest mb-2 text-[#80ffe0] drop-shadow-lg">
-              Vishwajeet Pratap Singh
+              4D PORTFOLIO
             </h1>
             <p className="text-lg text-[#b8ffe7] italic font-medium tracking-wider">
               My 4D Interactive Portfolio
